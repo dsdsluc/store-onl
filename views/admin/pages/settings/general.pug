@@ -1,0 +1,55 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main 
+    +alert-error(5000)
+    .main
+        h1.mb-4 Cài đặt chung
+        
+        form(
+            action=`/${prefixAdmin}/settings/general?_method=PATCH`, 
+            method="POST"
+            enctype="multipart/form-data"
+            ) 
+            div(class="mb-3") 
+                label(for="websiteName" class="form-label") Tên website
+                input(type="text" 
+                class="form-control" 
+                id="websiteName" 
+                placeholder ="Tên website" 
+                value = record.websiteName ? record.websiteName : ""
+                name="websiteName" 
+                require)
+
+            div(class="mb-3") 
+                label(for="address" class="form-label") Địa chỉ
+                input(type="text" 
+                class="form-control" 
+                id="address" placeholder ="Địa chỉ" 
+                name="address" 
+                value = record.address ? record.address : "")
+
+
+            div(class="mb-3") 
+                label(for="phone" class="form-label") Số điện thoại
+                input(type="number" 
+                class="form-control" id="phone" 
+                placeholder ="Số điện thoại" 
+                name="phone" 
+                value = record.phone ? record.phone : ""
+                )
+            
+
+            div(class="mb-3" upload) 
+                label(for="logo" class="form-label") Logo            
+                input(type="file" class="form-control-file" id="logo" name="logo" accept="image/*" upload-input)   
+                img(src=(record.logo ? record.logo : "") style="width:80px, height:80px" upload-image)
+
+            div(class="mb-3") 
+                label(for="copyright" class="form-label") Copyright
+                input(type="text" class="form-control" id="copyright" placeholder ="Số điện thoại" name="copyright" 
+                value = record.copyright ? record.copyright : ""
+                )
+
+            div(class="mb-3") 
+                button(type="submit" class="btn btn-info") Cập nhật

@@ -1,0 +1,51 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+include ../../mixins/select-tree.pug
+
+block main 
+    +alert-error(5000)
+    if( role.permissions.includes("products_category-create"))
+        .main
+            h1.mb-4 Tạo mới sản phẩm
+            .form-create-product
+                form(
+                    action=`/${prefixAdmin}/products-category/create`, 
+                    method="POST"
+                    id="form-create-product"
+                    class ="form-create-product"
+                    enctype="multipart/form-data"
+                    ) 
+                    div(class="mb-3") 
+                        label(for="title" class="form-label") Tiêu đề danh mục
+                        input(type="text" class="form-control" id="title" placeholder ="Tên danh mục" name="title" require)
+
+                    div(class="mb-3") 
+                        label(for="title" class="form-label") Danh mục cha
+                        select(
+                            name="parent_id"
+                            id="parent_id"
+                            class="form-control"
+                            )
+                            option(value="") ---Chọn danh mục cha---  
+                            +select-tree(productsCategory)
+                        
+                    div(class="mb-3") 
+                        label(for="description" class="form-label") Mô tả
+                        textarea(type="text" class="form-control" id="description" placeholder ="Mô tả" name="description" rows=5 require)
+
+                    div(class="mb-3" upload) 
+                        label(for="thumbnail" class="form-label") Hình ảnh               
+                        input(type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*" upload-input)   
+                        img(src=""  style="width=80px , height=80px" upload-image)
+                    p(class="lable-status") Trạng thái       
+                    div(class="mb-3 form-check status" ) 
+                        label(for="active" class="form-label") Hoạt động
+                        input(type="radio" class="form-check-input" id="active" name="status" checked value="active")   
+                    div(class="mb-3 form-check status")
+                        label(for="inactive" class="form-label") Ngưng hoạt động
+                        input(type="radio" class="form-check-input" id="inactive" name="status" value="inactive")          
+                    div(class="mb-3") 
+                        label(for="position" class="form-label") Vị trí
+                        input(type="number" class="form-control" id="position" name="position" min = 1)  
+                    div(class="mb-3") 
+                        button(type="submit" class="btn btn-info") Tạo mới

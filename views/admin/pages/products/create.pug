@@ -1,0 +1,64 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+include ../../mixins/select-tree.pug
+
+
+block main 
+    +alert-error(5000)
+    .main
+        h1.mb-4 Tạo mới sản phẩm
+        .form-create-product
+            form(
+                action=`/${prefixAdmin}/products/create`, 
+                method="POST"
+                id="form-create-product"
+                class ="form-create-product"
+                enctype="multipart/form-data"
+                ) 
+                div(class="mb-3") 
+                    label(for="title" class="form-label") Tiêu đề sản phẩm
+                    input(type="text" class="form-control" id="title" placeholder ="Tên sản phẩm" name="title" require)
+                    
+                div(class="mb-3") 
+                    label(for="description" class="form-label") Mô tả
+                    textarea(type="text" class="form-control" id="description" placeholder ="Mô tả" name="description" rows=5)
+
+                div(class="mb-3") 
+                    label(for="product_category_id" class="form-label") Chọn danh mục
+                    select(name="product_category_id" class="form-select") 
+                        option(value="") ----Danh mục sản phẩm------
+                        +select-tree(productsCategory)
+
+                div(class="mb-3 form-check status" ) 
+                    label(for="feature" class="form-label") Nổi bật
+                    input(type="radio" class="form-check-input" id="feature" name="feature" value="1")
+                div(class="mb-3 form-check status" ) 
+                    label(for="feature" class="form-label") Không nổi bật
+                    input(type="radio" class="form-check-input" id="feature" name="feature" checked value="0")
+
+                div(class="input-group mb-3 product-for-price") 
+                    label(for="price" class="form-label") Giá
+                    input(type="number" class="form-control" id="price" name="price" require)
+
+                    label(for="discountPercentage" class="form-label") Giảm giá
+                    input(type="number" class="form-control" id="discountPercentage" name="discountPercentage" require)
+
+                    label(for="stock" class="form-label") Còn lại
+                    input(type="number" class="form-control" id="stock" name="stock" require)
+                div(class="mb-3" upload) 
+                    label(for="thumbnail" class="form-label") Hình ảnh               
+                    input(type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*" upload-input)   
+                    img(src="" style="width:80px, height:80px" upload-image)
+                p(class="lable-status") Trạng thái       
+                div(class="mb-3 form-check status" ) 
+                    label(for="active" class="form-label") Hoạt động
+                    input(type="radio" class="form-check-input" id="active" name="status" checked value="active")   
+                div(class="mb-3 form-check status")
+                    label(for="inactive" class="form-label") Ngưng hoạt động
+                    input(type="radio" class="form-check-input" id="inactive" name="status" value="inactive")          
+                div(class="mb-3") 
+                    label(for="position" class="form-label") Vị trí
+                    input(type="number" class="form-control" id="position" name="position" min = 1)  
+                div(class="mb-3") 
+                    button(type="submit" class="btn btn-info") Tạo mới
+                

@@ -1,0 +1,39 @@
+extends ../../layouts/default.pug
+include ../../mixins/fillter-status.pug
+include ../../mixins/pagination.pug
+include ../../mixins/change-multi-status.pug
+include ../../mixins/alert.pug
+include ../../mixins/sort.pug
+include ../../mixins/table-tree.pug
+
+block main 
+    +alert-success(5000)
+    if( role.permissions.includes("products_category-view"))
+        .main 
+            h1.mb-4 Danh mục sản phẩm    
+            .card.mb-4
+                .card-header Danh sách
+                .card-body
+                    .row 
+                        .col-8
+                            if( role.permissions.includes("products_category-edit"))
+                            +change-multi-status(`/${prefixAdmin}/products/change-multi?_method=PATCH`)
+                        .col-4
+                            if( role.permissions.includes("products_category-create"))
+                                a(
+                                    href=`/${prefixAdmin}/products-category/create`
+                                    class= "btn btn-primary"
+                                ) + Thêm mới 
+            table(class = "table table-hover align-middle" change-multi-status)
+                thead.table-dark 
+                    tr  
+                        th 
+                            input(class="form-check-input" type="checkbox" check-box-all)
+                        th(scope ="col") STT
+                        th(scope ="col") Hình ảnh
+                        th(scope ="col") Tiêu đề
+                        th(scope ="col") Vị trí
+                        th(scope ="col") Trạng thái
+                        th(scope ="col") Hành động                                                               
+                tbody 
+                    +table-tree(productsCategory) 

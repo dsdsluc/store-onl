@@ -1,0 +1,25 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main 
+    +alert-error(5000)
+    if( role.permissions.includes("role-create")) 
+        .main
+            h1.mb-4 Tạo mới danh mục
+            .form-create-product
+                form(
+                    action=`/${prefixAdmin}/roles/create`, 
+                    method="POST"
+                    id="form-create-product"
+                    class ="form-create-product"
+                    ) 
+                    div(class="mb-3") 
+                        label(for="title" class="form-label") Tên nhóm quyền
+                        input(type="text" class="form-control" id="title" placeholder ="Tên danh mục" name="title" require)
+
+                    div(class="mb-3") 
+                        label(for="description" class="form-label") Mô tả
+                        input(type="text" class="form-control" id="description" placeholder ="Mô tả" name="description" )
+
+                    div(class="mb-3") 
+                        button(type="submit" class="btn btn-info") Tạo mới

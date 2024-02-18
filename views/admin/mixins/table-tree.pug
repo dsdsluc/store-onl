@@ -1,0 +1,53 @@
+mixin table-tree(productsCategory, level = 1)
+    -const prefix = Array(level+1).join("-- ");
+    each item in productsCategory 
+        tr
+            th 
+                input(class="form-check-input" type="checkbox" check-box-change-status value = item.id)  
+            th(scope="row") #{item.index}
+            td  
+                img(
+                    src=item.thumbnail, 
+                    alt=item.title
+                    )
+            td #{prefix} #{item.title}
+            td 
+                input( type="number" 
+                    change-position value= item.position
+                    style= "width: 60px"
+                    )  
+            td  
+                if( role.permissions.includes("products_category-edit"))
+                    if(item.status == "active")
+                        button( 
+                            class="badge bg-success"
+                            button-change-status
+                            data-id=item.id
+                            data-status="inactive"
+                            ) Hoạt động
+                                
+                    else 
+                        button( 
+                            class = "badge bg-danger"
+                            button-change-status
+                            data-id=item.id
+                            data-status="active"
+                            ) Không hoạt động
+            td
+                if( role.permissions.includes("products_category-edit"))
+                    a(
+                        class="btn btn-warning btn-sm"
+                        href =`/${prefixAdmin}/products-category/edit/${item.id}`
+                        ) Sửa
+                a(
+                    class="btn btn-secondary btn-sm"
+                    href =`/${prefixAdmin}/products-category/detail/${item.id}`
+                    ) Chi tiết
+                if( role.permissions.includes("products_category-delete"))
+                    button(
+                        class="btn btn-danger btn-sm ml-1"
+                        button-delete
+                        id-item-deleted = item.id
+                        ) Xóa
+        if item.children && item.children.length > 0
+                +table-tree(item.children, level + 1)                

@@ -1,0 +1,21 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main 
+    +alert-error(5000)
+    .main
+        h1.mb-4 Thông tin tài khoản
+        if(user.avatar)
+            img(src=user.avatar, alt="" )
+        if(user.fullName)
+            h3 #{user.fullName}
+        if(user.email)
+            p  #{user.email}
+        if(user.phone)
+            p #{user.phone}
+        if(user)
+            a(  
+                href=`/${prefixAdmin}/my-account/edit`
+                class="btn btn-secondary"
+                ) Chỉnh sửa
+                

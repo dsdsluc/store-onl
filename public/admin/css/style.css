@@ -1,0 +1,167 @@
+header {
+    padding: 10px;
+    background-color: #000000c6;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: sticky;
+    top: 0;
+}
+.logo {
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    font-weight: 800;
+    
+}
+.logo a {
+    text-decoration: none;
+    color: #fff;
+}
+.logo a:hover {
+    color: #ffffff77;
+}
+.body {
+    display: flex;
+    flex-flow: column nowrap;
+}
+.sider{
+    background-color: #000000c6;
+    position: fixed;
+    min-height: calc(100% - 80px);
+    width: 180px;
+}
+.inner-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    flex-flow: column nowrap;
+}
+.inner-menu ul > li {
+    padding: 10px;
+
+}
+.inner-menu ul > li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+.inner-menu ul > li:hover {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+.inner-menu ul > li a:hover{
+    color: #000;
+}
+/* Dashboard */
+.dashboard {
+    margin-left: 180px;
+}
+.main {
+    margin-left: 180px;
+}
+/* End Dashboard */
+
+/* Table Product */
+table {
+    border: 1px solid #0c0c0c;
+    padding: 5px;
+    border-radius: 5px;
+}
+table thead {
+    text-align: center;
+    font-size: 20px;
+    
+}
+table thead th {
+    text-align: center; 
+    vertical-align: middle; 
+}
+table tbody td {
+    text-align: center; 
+    vertical-align: middle;
+}
+table tbody td img {
+    width: 150px;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+}
+/* End Table Product */
+
+/* Alert */
+[show-alert] {
+    position: fixed;
+    top: 70px;
+    right: 15px;
+    z-index: 999;
+}
+[show-alert].alert-none{
+    animation-name: alert-hidden;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes alert-hidden{
+    from{
+        right: 15px;
+    }
+    to{
+        right: -100%;
+        display: none;
+    }
+}
+[close-alert]{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: 700;
+    cursor: pointer;
+}
+/* End Alert */
+
+/* Form Create Product */
+.form-create-product input{
+    width: 80% ;
+    padding: 10px;
+}
+.form-create-product label{
+    font-size: 22px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+.form-create-product .product-for-price {
+    gap: 10px;
+    width: 95%;
+    flex-flow: row nowrap;
+}
+
+.lable-status{
+    font-size: 22px;
+    font-weight: 600;
+}
+.form-create-product .status input[type=radio]{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.form-create-product .status > label{
+    font-size: 18px;
+    font-weight: 400;
+}
+/* End Form Create Product */

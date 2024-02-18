@@ -1,0 +1,16 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main 
+
+    .main
+        if(product.thumbnail)
+            img(src=product.thumbnail, alt="" )
+        if(product.tilte)
+            h3 #{product.tilte}
+        if(product.price)
+            p Giá: #{product.price}
+        if(product.discountPercentage)
+            p Giảm giá: #{product.discountPercentage}
+        if(product.description)
+            p Mô tả: !{product.description}

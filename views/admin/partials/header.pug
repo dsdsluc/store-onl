@@ -1,0 +1,18 @@
+header 
+    .container 
+        .row.align-items-center 
+            .col-3 
+                .logo 
+                    a(href=`/${prefixAdmin}/dashboard`) ADMIN
+            .col-7
+            .col-2
+                .logo 
+                    a(
+                        href=`/${prefixAdmin}/my-account`
+                        class ="btn btn-primary"
+                    ) #{user.fullName}
+                    a(
+                        href=`/${prefixAdmin}/auth/logout`
+                        class ="btn btn-danger"
+                    ) Đăng xuất
+                    
