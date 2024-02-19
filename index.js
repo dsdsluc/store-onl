@@ -9,6 +9,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const path = require('path');
 const moment = require("moment");
+const http = require("http");
+const { Server } = require("socket.io");
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))
@@ -17,6 +19,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const database = require("./configs/database")
 database.connect();
+
+//SocketIO
+const server = http.createServer(app);
+const io = new Server(server);
+
+global._io = io
+
+//End SocketIO
 
 //Flash
 app.use(cookieParser('keyboard cat'));
@@ -52,6 +62,6 @@ app.get("*",(req,res)=>{
 app.locals.prefixAdmin = system.prefixAdmin
 app.locals.moment = moment
 // End Variable
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
