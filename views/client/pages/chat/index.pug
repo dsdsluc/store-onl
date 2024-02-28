@@ -6,10 +6,11 @@ block main
   +alert-success(5000)
   +alert-error(5000)
   .container.my-3
+    include ../../partials/list-btn-user.pug
+  
     .row
       .col-12
         +box-head("Chat")
-
 
     .row
       .col-12
@@ -45,5 +46,7 @@ block main
                         i(class="fa-solid fa-paper-plane")
   div(class="tooltip" role="tooltip")
     emoji-picker
-
+block script 
+  script(type="module" src="/client/js/chat.js")
+  script(src="/client/js/user.js")
     

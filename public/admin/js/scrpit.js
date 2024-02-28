@@ -23,7 +23,7 @@ if(buttonStatus.length > 0 ){
 
 // Search
 const formSearch = document.querySelector("#form-search");
-if(formSearch > 0 ){
+if(formSearch){
     const url = new URL(window.location.href);
 
     formSearch.addEventListener("submit",(e)=>{

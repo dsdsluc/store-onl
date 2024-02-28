@@ -17,6 +17,7 @@ if (formSendChat) {
         images: images
       });
       e.target.elements.content.value = "";
+      upload.resetPreviewPanel();
       socket.emit("CLIENT_SEND_TYPING", "hidden");
     }
   });
@@ -63,7 +64,7 @@ socket.on("SERVER_RETURN_MESSAGE", (data) => {
 
   body.insertBefore(div,boxTyping);
   body.scrollTop = body.scrollHeight;
-  upload.resetPreviewPanel();
+  const gallery = new Viewer(div);
 });
 // END SERVER_RETURN_MESSGAE
 
@@ -145,6 +146,7 @@ if (elementBox) {
     `;
         elementBox.appendChild(divTyping);
         bodyChat.scrollTop = bodyChat.scrollHeight;
+        
       }
     }else{
       const boxRemoveTyping = document.querySelector(`[user-id="${data.userId}"]`);
@@ -156,3 +158,10 @@ if (elementBox) {
 }
 
 // END SERVER_SEND_TYPING
+
+// Preview Image Full Screen
+const bodyChatCreateFull = document.querySelector(".chat .inner-body");
+if(bodyChatCreateFull){
+  const gallery = new Viewer(bodyChatCreateFull);
+}
+// End Preview Image Full Screen

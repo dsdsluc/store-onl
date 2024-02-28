@@ -71,12 +71,28 @@ module.exports.loginPost = async(req, res) =>{
         user_id : user.id
     })
 
-    res.cookie("tokenUser",user.tokenUser)
+    res.cookie("tokenUser",user.tokenUser);
+    await User.updateOne({
+        _id: user.id
+    },{
+        statusOnline: "online"
+    });
+    _io.once("connection",  (socket) =>{
+        socket.broadcast.emit("SERVER_RETURN_USER_ONLINE",user.id)
+      })
     res.redirect("/")
 }
 
 module.exports.logout = async(req, res) =>{
 
+    await User.updateOne({
+        _id: res.locals.user.id
+    },{
+        statusOnline: "offline"
+    })
+    _io.once("connection",  (socket) =>{
+        socket.broadcast.emit("SERVER_RETURN_USER_OFFLINE",res.locals.user.id)
+      })
     res.clearCookie("tokenUser")
     res.redirect(`/user/login`)
 }
@@ -172,7 +188,6 @@ module.exports.resetPasswordPatch = async(req, res) => {
 }
 
 module.exports.inforUser = async(req, res) => {
-    
     res.render("client/pages/user/infor",{
         pageTitle : "Thông tin người dùng",
     });
