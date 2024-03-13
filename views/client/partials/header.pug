@@ -1,8 +1,21 @@
 include ../mixins/sub-menu.pug
 
 header(class="header")
-    div(class="container")
-        div(class="main__header")
+  
+    div(class="head")
+        div(class="container")
+            div(class="left")
+                div(class="email") <i class="fa-regular fa-envelope"></i> support@rstheme.com
+                div(class="phone") <i class="fa-solid fa-phone"></i> 0987654321
+            div(class="head-right")
+                if(user) 
+                    a(href="/user/logout") Đăng xuất
+                else 
+                    a(href="/user/register") Đăng kí
+                    a(href="/user/login") Đăng nhập
+    
+    div(class="main__header")
+        div(class="container")
             div(class="inner-logo")
                 a(href="/") 
                     img(src=settingGeneral.logo, alt="Logo")
@@ -18,7 +31,7 @@ header(class="header")
                         name ="keyword"
                         value = keyword
                     )
-                    button(type="submit" class="btn btn-primary")  Tìm kiếm
+                    button(type="submit" class="btn btn-primary") Search
 
             div(class="inner-menu")
                 ul 
@@ -36,12 +49,8 @@ header(class="header")
                             a(href="/users/friends") Bạn bè
                         li 
                             a(href="/rooms-chat") Phòng chat
-                        li 
-                            a(href="/user/logout") Đăng xuất
+                        
                         li 
                             a(href="/user/infor") #{user.fullName}
                     else
-                        li 
-                            a(href="/user/register") Đăng kí
-                        li 
-                            a(href="/user/login") Đăng nhập
+                        

@@ -188,7 +188,19 @@ module.exports.resetPasswordPatch = async(req, res) => {
 }
 
 module.exports.inforUser = async(req, res) => {
+    
     res.render("client/pages/user/infor",{
         pageTitle : "Thông tin người dùng",
     });
+}
+
+module.exports.editPatch = async(req, res) => {
+    console.log(req.body)
+    if(req.body){
+        const user = res.locals.user;
+        await User.updateOne({
+            _id: user.id
+        },req.body)
+    }
+    res.redirect("back")
 }

@@ -4,11 +4,69 @@ include ../../mixins/box-head.pug
 
 block main
   +alert-error(5000)
-  +box-head("Thông tin cá nhân")  
-  .container.my-5
-    .row.justify-content-center
-      .col-8
-        div #{user.fullName}
-        div #{user.email}
     
-        
+  div(class="background-infor")
+    .container
+      +box-head("Thông tin cá nhân")
+      .row 
+        .col-6
+          div(class="panel-info")
+            div(class="inforUser")
+              div(class="inner-avatar")
+                img(src=(user.avatar ? user.avatar : "/client/images/user-avatar.jpg"), alt=user.fullName)
+              div(class="user-infor")
+                div(class="fullName") #{user.fullName}
+                div(class="email") #{user.email}
+        .col-6
+          div(class="edit-infor")
+            h1(class="text-center") Chỉnh sửa thông tin cá nhân
+            form(
+              action=`/user/edit?_method=PATCH`
+              method="POST"
+              enctype="multipart/form-data"
+            )
+              div(class="form-group")
+                label(for="email") Email
+                input(
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  value=user.email
+                )
+              div(class="form-group")
+                label(for="email") Phone
+                input(
+                  type="phone"
+                  class="form-control"
+                  id="phone"
+                  name="phone"
+                  value=user.phone
+                )
+              div(class="form-group mb-2")
+                label(for="address") Địa chỉ
+                input(
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  name="address"
+                  value=user.address
+                )
+              div(class="form-group mb-2" upload)
+                label(for="avatar") Avatar
+                input(
+                  type="file"
+                  class="form-control"
+                  id="avatar"
+                  name="avatar"
+                  accept="image/*"
+                  upload-input
+                )
+                div(class="inner-image")
+                  img(src="" upload-image)
+              div(class="form-group d-grid button")
+                button(
+                  type="submit"
+                  class="btn btn-primary btn-block "
+                ) Chỉnh sửa
+              

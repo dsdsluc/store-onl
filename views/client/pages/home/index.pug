@@ -1,15 +1,29 @@
 extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 include ../../mixins/products-grid.pug
+include ../../mixins/products-home.pug
+
 
 block main 
-    h1 Trang chu
+    swiper-container
+        each item in products
+            swiper-slide
+                .inner-image    
+                    img(src=item.thumbnail, alt=item.title) 
+                           
+                    
     .container.mb-3 
         .row.mb-3 
             .col-12 
-               +box-head("Sản phẩm nổi bật") 
-        +products-grid(products)
+               +box-head("Sản phẩm nổi bật")
+
+
+    +products-home(products)
+
+    .container.mb-3 
         .row.mb-3 
             .col-12 
                +box-head("Sản phẩm mới nhất") 
         +products-grid(recentProducts)
+
+    

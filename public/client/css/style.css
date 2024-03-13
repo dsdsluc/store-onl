@@ -6,22 +6,108 @@ header {
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   position: sticky;
+  z-index: 999;
   top: 0;
+  margin-bottom: 10px;
 }
 
-.logo {
-  max-width: 100%;
-  max-height: 100px;
-  aspect-ratio: 4/3;
+.header .head {
+  background-color: #273C66;
+  height: 50px;
 }
 
-.logo img {
-  width: 100%;
+.header .head .container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .head .left {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  column-gap: 10px;
+}
+.header .head .left .email:hover{
+  color: #22A0CD;
+}
+.header .head .left .phone:hover{
+  color: #22A0CD;
+}
+
+.header .head-right{
+  height: 100%;
+  display: flex;
+  column-gap: 10px;
+}
+.header .head-right > a {
+  display: inline-flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+.header .head-right > a:hover{
+  color: #22A0CD;
+  cursor: pointer;
+}
+
+.header .main__header {
+  background-color: #fff;
+
+  height: 120px;
+}
+.header .main__header .container{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .main__header .inner-logo {
+  width: 260px;
+
+}
+.header .main__header .inner-logo img{
+  width:100% ;
   height: 100%;
   object-fit: contain;
 }
 
+.header .main__header .form-control {
+  border: none;
+}
+
+.header .main__header form {
+  border: none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .main__header .form-control input {
+  width: 240px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 5px;
+  
+}
+.inner-menu {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .inner-menu ul {
+  height: 100%;
   display: flex;
   padding: 0;
   margin: 0;
@@ -29,30 +115,86 @@ header {
   column-gap: 20px;
   align-items: center;
   justify-content: flex-end;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .inner-menu ul > li {
-  padding: 10px;
-  background-color: rgba(128, 255, 0, 0.299);
-  border-radius: 20px;
-}
-
-.inner-menu ul > li:hover {
-  background-color: chartreuse;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 0 10px
+  
 }
 
 .inner-menu ul > li:hover a {
-  color: rgba(0, 0, 0, 0.56);
+  color: #22A0CD;
 }
 
 .inner-menu ul > li a {
   text-decoration: none;
   font-weight: 700;
-  color: black;
+  color: #333;
+  font-size: 14px;
+}
+
+/* sub-menu  */
+.sub-menu {
+  position: relative;
+  z-index: 9999;
+}
+
+.sub-menu ul {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 180px;
+  display: none;
+  
+}
+
+.sub-menu ul li {
+  padding: 10px;
+  border-bottom: none;
+}
+
+.sub-menu:hover > ul {
+  display: block;
+}
+
+.sub-menu ul li {
+  position: relative;
+}
+
+.sub-menu ul li ul {
+  right: 100%;
+  top: 0;
+}
+
+.sub-menu ul li:hover > ul {
+  display: block;
 }
 
 /* End Header */
+
+/* swiper-container */
+swiper-container{
+  background-color: #3E5277;
+  width: 100%;
+}
+
+swiper-container .inner-image {
+  width: 100%;
+  aspect-ratio: 4/2;
+}
+
+swiper-container .inner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* swiper-container */
 
 /* Footer */
 footer {
@@ -67,28 +209,92 @@ footer {
 /* End Footer */
 
 /* Box-Head */
-.box-head {
-  margin-top: 0;
-  padding: 10px;
-  background-color: rgba(255, 166, 0, 0.564);
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
+.box-head{
+  background-color: transparent;
+  padding: 20px;
 
+}
 .box-head .inner-title {
-  font-weight: 800;
-  font-size: 28px;
+  color: #112958;
+  text-align: center;
+}
+/* End Box-Head */
+
+/* Box Home */
+
+.product-home {
+  padding: 60px;
 }
 
-/* End Box-Head */
+.product-home:nth-child(2n) {
+  background-color: #101517;
+}
+
+
+.product-home .product-item {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+}
+
+.product-home:nth-child(2n) .product-item {
+  flex-direction: row-reverse;
+}
+
+.product-home .product-item .inner-image{
+  background-color: transparent;
+  width: 30%;
+  aspect-ratio: 3/4;
+  margin-right: 20px;
+}
+
+.product-home .product-item .inner-image img {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+}
+
+.product-home .product-item .inner-content{
+  background-color: transparent;
+  flex: 1;
+}
+
+.product-home .product-item .inner-content .inner-title{
+  background-color: transparent;
+  word-wrap: break-word;
+  color: #101517;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 800;
+}
+.product-home:nth-child(2n) .inner-content .inner-title {
+  color: #fff;
+}
+
+
+.product-home .product-item .inner-content .inner-title:hover {
+  background-color: transparent;
+  color: #22A0CD;
+}
+.product-home:nth-child(2n) .product-item .inner-content .inner-description{
+  color: #fff;
+}
+
+.product-home .product-item .inner-content .inner-description{
+  color: #101517;
+}
+/* End Box Home */
 
 /* Product item  */
 .product-item {
   width: 95%;
   padding: 10px;
-  background-color: aquamarine;
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -104,13 +310,15 @@ footer {
   object-fit: contain;
 }
 
-.product-item .inner-title {
+.product-item .inner-content .inner-title {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 24px;
-  font-weight: 800;
+  font-size: 18px;
   text-align: center;
+  color: #22A0CD;
+  text-decoration: none;
+
 }
 
 .product-item .inner-price-new {
@@ -135,79 +343,6 @@ footer {
 
 /* End Product item  */
 
-/* sub-menu  */
-.sub-menu {
-  position: relative;
-  z-index: 999;
-}
-
-.sub-menu ul {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background: #eae9e9;
-  min-width: 180px;
-  display: none;
-}
-
-.sub-menu ul li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.sub-menu:hover > ul {
-  display: block;
-}
-
-.sub-menu ul li {
-  position: relative;
-}
-
-.sub-menu ul li ul {
-  right: 100%;
-  top: 0;
-}
-
-.sub-menu ul li:hover > ul {
-  display: block;
-}
-
-/* Header */
-.main__header {
-  display: flex;
-  align-items: center;
-  column-gap: 20px;
-  justify-content: space-between;
-  border-bottom: 1px solid #333;
-}
-
-.inner-logo {
-  width: 100px;
-  height: auto;
-  aspect-ratio: 4/3;
-}
-
-.inner-logo img {
-  width: 100%;
-  height: 100%;
-}
-
-.inner-menu > a {
-  margin: 0 10px;
-}
-
-/* End Header */
-
-/* Box Head */
-.inner-title {
-  color: green;
-  margin: 10px 0;
-}
-
-/* End Box Head */
 
 /* Products */
 .product-item {
@@ -271,46 +406,6 @@ footer {
 
 /* End Products */
 
-/* sub-menu  */
-.sub-menu {
-  position: relative;
-  z-index: 999;
-}
-
-.sub-menu ul {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background: #eae9e9;
-  min-width: 180px;
-  display: none;
-}
-
-.sub-menu ul li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.sub-menu:hover > ul {
-  display: block;
-}
-
-.sub-menu ul li {
-  position: relative;
-}
-
-.sub-menu ul li ul {
-  right: 100%;
-  top: 0;
-}
-
-.sub-menu ul li:hover > ul {
-  display: block;
-}
-
 /* Footer */
 .footer {
   text-align: center;
@@ -318,8 +413,8 @@ footer {
 
   color: #fff;
 }
-
 /* End Footer */
+
 
 /* product-detail */
 .product-detail .inner-thumb img {
@@ -699,5 +794,148 @@ footer {
   font-weight: 600;
   margin-bottom: 3px;
 }
-
 /* END BOX ROOM */
+
+.login-thumbnail {
+  background-color: #F0E032;
+  padding: 80px 0px;
+
+} 
+.login-thumbnail .inner-image {
+  width: 100%;
+  aspect-ratio: 2/4;
+  border-radius: 20px;
+  overflow: hidden;
+
+}
+.login-thumbnail .inner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-thumbnail .login-package {
+  padding: 60px;
+  background-color:#fff ;
+  border-radius: 10px;
+}
+
+.login-thumbnail .login .text-center{
+  font-size: 22px;
+  font-weight: bold;
+
+}
+.login-thumbnail .login label {
+  font-size: 18px;
+  color: #a9a4a4;
+  margin-bottom: 5px;
+}
+
+.login-thumbnail .login input {
+  height: 50px;
+  border-radius: 10px;
+  margin: 0 10px ;
+  margin-bottom: 10px;
+
+}
+.login-thumbnail .login .button {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.login-thumbnail .login button {
+  width: 300px;
+  height: 50px;
+  background-color: #F0E032;
+  border: none;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* InforUSer */
+.background-infor{
+  background-color: #FFC700;
+  margin-top: -10px;
+  padding: 20px;
+}
+.background-infor > .container {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-top: -20px;
+  background-color: #fff; 
+}
+
+.background-infor .inforUser .inner-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.background-infor .inforUser {
+  display: flex;
+  margin-left: 80px;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.background-infor .inforUser .inner-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.background-infor .inforUser .user-infor .fullName{
+  color: #101517;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.edit-infor {
+  padding: 20px;
+}
+.edit-infor > .text-center{
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.edit-infor label {
+  font-size: 18px;
+  color: #a9a4a4;
+  margin-bottom: 5px;
+}
+
+
+.edit-infor input {
+  height: 50px;
+  border-radius: 10px;
+  margin: 0 10px ;
+  margin-bottom: 10px;
+
+}
+
+.edit-infor .button {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.edit-infor button {
+  width: 300px;
+  height: 50px;
+  background-color: #F0E032;
+  border: none;
+  font-weight: 700;
+  margin-top: 10px;
+}
+[upload] .inner-image {
+  width: 120px;
+  height: 120px;
+  display: none;
+}
+[upload] .inner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+}
+/* End InforUSer */

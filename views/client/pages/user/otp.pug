@@ -4,36 +4,41 @@ include ../../mixins/alert.pug
 block main
   +alert-error(5000)
 
-  .container.my-5
-    .row.justify-content-center
-      .col-8
-        h1(class="text-center") Nhập mã OTP
-        form(
-          action="/user/password/otp"
-          method="POST"
-        )
-          div(class="form-group")
-            label(for="email") Email
-            input(
-              type="email"
-              class="form-control"
-              id="email"
-              name="email"
-              value = email
-              readonly
-              required
+  div(class="login-thumbnail")
+    .container.my-5
+      .row.justify-content-center.login-package
+        .col-4 
+          .inner-image 
+            img(src="/client/images/KhinhKhiCau.jpg", alt="")
+        .col-8
+          div(class="login")
+            h1(class="text-center") Nhập mã OTP
+            form(
+              action="/user/password/otp"
+              method="POST"
             )
-          div(class="form-group mb-2")
-            label(for="password") Mã OTP
-            input(
-              type="otp"
-              class="form-control"
-              id="otp"
-              name="otp"
-              required
-            )
-          div(class="form-group d-grid")
-            button(
-              type="submit"
-              class="btn btn-primary btn-block "
-            ) Gửi mã xác nhận
+              div(class="form-group")
+                label(for="email") Email
+                input(
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  value = email
+                  readonly
+                  required
+                )
+              div(class="form-group mb-2")
+                label(for="password") Mã OTP
+                input(
+                  type="otp"
+                  class="form-control"
+                  id="otp"
+                  name="otp"
+                  required
+                )
+              div(class="form-group d-grid button")
+                button(
+                  type="submit"
+                  class="btn btn-primary btn-block "
+                ) Gửi mã xác nhận
