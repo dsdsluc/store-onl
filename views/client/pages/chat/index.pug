@@ -15,6 +15,11 @@ block main
     .row
       .col-12
         div(class="chat" my-id = user.id)
+            .inner-header   
+              div(class="inner-title") 
+                if(roomChat.title)
+                  #{roomChat.title}  
+                    
             .inner-body
                 each chat in chats 
                     div(

@@ -12,21 +12,22 @@ block main
         +box-head("Danh sách người dùng")
 
     .row(data-users-not-friend = user.id) 
-        each user in users
-            .col-6(user_id = user.id)
+        each userNotFriend in users
+            .col-6(user_id = userNotFriend.id)
                 div(class='box-user')
                     div(class="inner-avatar")
-                        img(src =(user.avatar ? user.avatar : "/client/images/user-avatar.jpg"), alt= user.fullName)
+                        img(src =(userNotFriend.avatar ? userNotFriend.avatar : "/client/images/user-avatar.jpg"), alt= userNotFriend.fullName)
                     div(class="inner-infor")
-                        div(class="inner-name") #{user.fullName}  
+                        div(class="inner-name") #{userNotFriend.fullName}  
                         div(class="inner-buttons") 
                             button(
                                 class="btn btn-sm btn-primary me-md-2"
-                                btn-add-friend=user.id
+                                btn-add-friend=userNotFriend.id
                                 ) Kết bạn
                             button(
                                 class="btn btn-sm btn-secondary me-md-2"
-                                btn-cancel-friend=user.id
+                                btn-cancel-friend=userNotFriend.id
                                 ) Hủy
+            
 block script 
     script(src="/client/js/user.js")

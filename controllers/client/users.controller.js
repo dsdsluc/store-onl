@@ -9,6 +9,11 @@ module.exports.notFriend = async (req, res) => {
     const myUser = await User.findOne({
       _id: myUserId
     });
+    const listFriends = myUser.friendList;
+    let listFriendId = [];
+    listFriends.forEach(item=>{
+      listFriendId.push(item.user_id);
+    })
     const requestFriends = myUser.requestFriends;
     const acceptFriends = myUser.acceptFriends;
     const users = await User.find({
@@ -20,12 +25,13 @@ module.exports.notFriend = async (req, res) => {
           },
           {
             _id: {$nin: acceptFriends}
+          },{
+            _id: {$nin: listFriendId}
           }
         ],      
         status: "active",
         deleted: false
     }).select("fullName id avatar");
-
   res.render("client/pages/users/not-friend", {
     pageTitle: "Danh sách người dung",
     users: users

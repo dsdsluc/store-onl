@@ -1,6 +1,7 @@
 const Chat = require("../../models/chat.model");
 const User = require("../../models/user.model");
 const chatSocket = require("../../sockets/client/chat.socket");
+const RoomChat = require("../../models/room-chat.model")
 
 
 module.exports.index = async (req, res) => {
@@ -19,9 +20,13 @@ module.exports.index = async (req, res) => {
 
     chat.user = user;
   }
-  
+  const roomChat = await RoomChat.findOne({
+    _id: roomChatId
+  })
+
   res.render("client/pages/chat/index", {
     pageTitle: "Chat",
     chats: chats,
+    roomChat: roomChat
   });
 };
